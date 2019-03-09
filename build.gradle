@@ -13,10 +13,18 @@ repositories {
 	mavenCentral()
 }
 
+configurations {
+	compile.exclude module: "spring-boot-starter-tomcat"
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
+	compile("org.springframework.boot:spring-boot-starter-undertow:1.5.9.RELEASE")
 	runtimeOnly 'mysql:mysql-connector-java'
+
+	compile 'io.springfox:springfox-swagger2:2.9.2'
+	compile 'io.springfox:springfox-swagger-ui:2.9.2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
