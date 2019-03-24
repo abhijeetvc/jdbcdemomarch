@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class StudentController {
@@ -36,5 +37,12 @@ public class StudentController {
 
     }
 
+    @GetMapping(value="/getjoindata")
+    public List<Map<String,Object>> getCombinedData1(){
+
+        List<Map<String,Object>> list=studentImpl.getCombinedData();
+        return list;
+
+    }
 
 }

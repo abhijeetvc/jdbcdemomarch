@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class StudentImpl implements StudentInterface {
@@ -38,5 +39,15 @@ public class StudentImpl implements StudentInterface {
         Student s=jdbcTemplate.queryForObject(sql, new Object[]{id},
                 new BeanPropertyRowMapper<>(Student.class));
         return s;
+    }
+
+    @Override
+    public List<Map<String, Object>> getCombinedData() {
+
+        String sql="select a.id, a.name as studentName, b.name as deptname " +
+                "from student a,department b where b.id=a.dept_id";
+
+        List<Map<String,Object>> list=jdbcTemplate.queryForList(sql);
+        return list;
     }
 }

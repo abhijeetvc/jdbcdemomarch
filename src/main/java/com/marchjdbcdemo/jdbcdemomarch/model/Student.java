@@ -7,6 +7,16 @@ public class Student {
     private String name;
     private String city;
 
+    private Integer deptId;
+
+    public Integer getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(Integer deptId) {
+        this.deptId = deptId;
+    }
+
     public Integer getId() {
         return id;
     }
